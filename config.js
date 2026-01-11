@@ -1,6 +1,6 @@
 // config.js
 const datos = [
-    { fecha: '2026-01-01', texto: "lorem ipsum1" },
+    { fecha: '2025-01-01', texto: "lorem ipsum1" },
     { fecha: '2026-01-29', texto: "lorem ipsum2" },
     { fecha: '2026-01-30', texto: "lorem ipsum3" },
     { fecha: '2026-01-31', texto: "lorem ipsum4" },

@@ -28,7 +28,6 @@ document.addEventListener('DOMContentLoaded', function() {
         paginaActual = paginaInicial;
         document.getElementById("pagina" + paginaInicial).style.display = "flex";
         configurarNavegacion(datos.length);
-        actualizarBotones();
         
     } else {
         container.textContent = 'No hay datos disponibles. Verifique el archivo config.js.';
@@ -38,8 +37,23 @@ document.addEventListener('DOMContentLoaded', function() {
     const btnAnterior = document.getElementById('btnAnterior');
     const btnSiguiente = document.getElementById('btnSiguiente');
     
-    // Actualizar estado inicial de botones
+    // Función para animar el texto de la página actual
+    function animarTextoPaginaActual() {
+        const pagina = document.getElementById("pagina" + paginaActual);
+        const textoElement = pagina.querySelector(".texto-animado");
+        
+        if (textoElement && textoElement.dataset.textoOriginal) {
+            // Solo animar si el contenido está visible (no bloqueado)
+            const contenidoBloqueado = document.getElementById("contenidoBloqueado" + paginaActual);
+            if (contenidoBloqueado && contenidoBloqueado.style.display !== "block") {
+                animar_texto(textoElement.dataset.textoOriginal, "textoAnimado" + paginaActual);
+            }
+        }
+    }
+    
+    // Actualizar estado inicial de botones y animar primera página
     actualizarBotones();
+    setTimeout(animarTextoPaginaActual, 100); // Pequeño delay para asegurar que el DOM esté listo
     
     btnAnterior.addEventListener('click', function() {
         if (paginaActual > 1) {
@@ -49,6 +63,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Mostrar página anterior
             document.getElementById("pagina" + paginaActual).style.display = "flex";
+            
+            // Animar texto de la nueva página
+            setTimeout(animarTextoPaginaActual, 100);
             
             // Actualizar estado de botones
             actualizarBotones();
@@ -63,6 +80,9 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // Mostrar página siguiente
             document.getElementById("pagina" + paginaActual).style.display = "flex";
+            
+            // Animar texto de la nueva página
+            setTimeout(animarTextoPaginaActual, 100);
             
             // Actualizar estado de botones
             actualizarBotones();
@@ -99,9 +119,12 @@ function crear_pagina(pagina, texto, cont) {
     const text = document.createElement('div');
     contenido.className = "contenido";
     text.className = "texto-animado";
-    text.textContent = texto;
+    text.setAttribute("id", "textoAnimado" + cont); // Agregar ID único para cada texto
     pagina.appendChild(contenido);
     contenido.appendChild(text);
+    
+    // Guardar el texto para animarlo después
+    text.dataset.textoOriginal = texto;
     
     //crear contenido bloqueado
     const contenido_bloqueado = document.createElement('div');
@@ -229,7 +252,71 @@ function encontrarPaginaInicial() {
     return paginaMasCercana;
 }
 
-
+function animar_texto(texto, texto_animado_id) {
+    const contenedor = document.getElementById(texto_animado_id);
+    if (!contenedor) return;
+    
+    // Limpiar contenedor
+    contenedor.innerHTML = '';
+    
+    // Contador lineal de letras (sin importar palabras)
+    let contadorLetras = 0;
+    
+    const palabras = texto.split(' ');
+    
+    palabras.forEach((palabra, palabraIndex) => {
+        // Contenedor para palabra completa
+        const palabraSpan = document.createElement('span');
+        palabraSpan.className = 'palabra-animada-container';
+        palabraSpan.style.display = 'inline-block';
+        palabraSpan.style.whiteSpace = 'nowrap';
+        
+        // Añadir letras con retardo lineal
+        for (let i = 0; i < palabra.length; i++) {
+            const letraSpan = document.createElement('span');
+            letraSpan.className = 'letra-animada';
+            letraSpan.textContent = palabra[i];
+            letraSpan.style.display = 'inline-block';
+            letraSpan.style.opacity = '0';
+            letraSpan.style.transform = 'translate(-3px,-20px)';
+            letraSpan.style.transition = 'all 0.3s ease';
+            
+            // Retardo LINEAL - cada letra tiene su propio delay secuencial
+            letraSpan.style.transitionDelay = `${contadorLetras * 0.08}s`;
+            contadorLetras++;
+            
+            palabraSpan.appendChild(letraSpan);
+        }
+        
+        contenedor.appendChild(palabraSpan);
+        
+        // Añadir espacio (usando un span especial)
+        if (palabraIndex < palabras.length - 1) {
+            const espacio = document.createElement('span');
+            espacio.className = 'espacio-animado';
+            espacio.innerHTML = '&nbsp;';
+            espacio.style.whiteSpace = 'nowrap';
+            
+            // El espacio también se anima
+            espacio.style.opacity = '0';
+            espacio.style.transform = 'translateY(20px)';
+            espacio.style.transition = 'all 0.3s ease';
+            espacio.style.transitionDelay = `${contadorLetras * 0.08}s`;
+            contadorLetras++;
+            
+            contenedor.appendChild(espacio);
+        }
+    });
+    
+    // Animar TODAS las letras y espacios
+    setTimeout(() => {
+        const elementos = contenedor.querySelectorAll('.letra-animada, .espacio-animado');
+        elementos.forEach(elemento => {
+            elemento.style.opacity = '1';
+            elemento.style.transform = 'translateY(0)';
+        });
+    }, 500);
+}
 
 //==========================================================================================================================================================
 //==========================================================================================================================================================
