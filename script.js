@@ -1,371 +1,238 @@
 //==========================================================================================================================================================
-        //Fondo body corazones animados
-        //==========================================================================================================================================================
-        var love = setInterval(function(){
-          var r_num = Math.floor(Math.random() * 40) + 1;
-          var r_size = Math.floor(Math.random() * 65) + 10;
-          var r_left = Math.floor(Math.random() * 100) + 1;
-          var r_bg = Math.floor(Math.random() * 25) + 100;
-          var r_time = Math.floor(Math.random() * 5) + 5;
+//generar listado de paginas dinamicas
+//==========================================================================================================================================================
+var fechaDesbloqueo = []
 
-          $('.bg_heart').append("<div class='heart' style='width:"+r_size+"px;height:"+r_size+"px;left:"+r_left+"%;background:rgba(255,"+(r_bg-25)+","+r_bg+",1);-webkit-animation:love "+r_time+"s ease;-moz-animation:love "+r_time+"s ease;-ms-animation:love "+r_time+"s ease;animation:love "+r_time+"s ease'></div>");
-
-          $('.bg_heart').append("<div class='heart' style='width:"+(r_size-10)+"px;height:"+(r_size-10)+"px;left:"+(r_left+r_num)+"%;background:rgba(255,"+(r_bg-25)+","+(r_bg+25)+",1);-webkit-animation:love "+(r_time+5)+"s ease;-moz-animation:love "+(r_time+5)+"s ease;-ms-animation:love "+(r_time+5)+"s ease;animation:love "+(r_time+5)+"s ease'></div>");
-
-          $('.heart').each(function(){
-            var top = $(this).css("top").replace(/[^-\d\.]/g, '');
-            var width = $(this).css("width").replace(/[^-\d\.]/g, '');
-            if(top <= -100 || width >= 150){
-              $(this).detach();
-            }
-          });
-        },500);
-        //==========================================================================================================================================================
-        //==========================================================================================================================================================
-
-        //==========================================================================================================================================================
-        //Bloque de paginado
-        //==========================================================================================================================================================
-        {
-        // Configuración de fechas de desbloqueo
-        const fechasDesbloqueo = [
-            new Date('2000-01-01'), // Página 1 - siempre visible (fecha pasada)
-            new Date('2025-02-01'), // Página 2 - 1 de febrero
-            new Date('2025-02-02'), // Página 3 - 2 de febrero
-            new Date('2025-02-03')  // Página 4 - 3 de febrero
-        ];
-        
-        const paginas = document.querySelectorAll('.pagina');
-        const btnSiguiente = document.getElementById('btnSiguiente');
-        const btnAnterior = document.getElementById('btnAnterior');
-        const indicadores = document.getElementById('indicadores');
-        let paginaActual = 0;
-        
-        // Función para verificar si una página está desbloqueada
-        function estaDesbloqueada(numeroPagina) {
-            const fechaDesbloqueo = fechasDesbloqueo[numeroPagina];
-            const hoy = new Date();
+document.addEventListener('DOMContentLoaded', function() {
+    const container = document.getElementById('pagina-container');
+    let paginaActual = 1; // Variable para rastrear la página actual
+    
+    if (typeof datos !== 'undefined' && Array.isArray(datos)) {
+        let cont = 1;
+        datos.forEach(item => {
+            const pagina = document.createElement('div');
+            pagina.className = "pagina";
+            pagina.setAttribute("id", "pagina" + cont);
             
-            // Establecer horas a 0 para comparar solo días
-            const hoySinHora = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
-            const fechaDesbloqueoSinHora = new Date(
-                fechaDesbloqueo.getFullYear(), 
-                fechaDesbloqueo.getMonth(), 
-                fechaDesbloqueo.getDate()
-            );
+            // Solo la primera página será visible inicialmente
+            pagina.style.display = "none";
             
-            return hoySinHora >= fechaDesbloqueoSinHora;
-        }
-        
-        // Función para calcular días faltantes
-        function calcularDiasFaltantes(numeroPagina) {
-            const fechaDesbloqueo = fechasDesbloqueo[numeroPagina];
-            const hoy = new Date();
-            
-            // Establecer horas a 0 para cálculo preciso
-            const hoySinHora = new Date(hoy.getFullYear(), hoy.getMonth(), hoy.getDate());
-            const fechaDesbloqueoSinHora = new Date(
-                fechaDesbloqueo.getFullYear(), 
-                fechaDesbloqueo.getMonth(), 
-                fechaDesbloqueo.getDate()
-            );
-            
-            const diferenciaMs = fechaDesbloqueoSinHora - hoySinHora;
-            const diasFaltantes = Math.ceil(diferenciaMs / (1000 * 60 * 60 * 24));
-            
-            return diasFaltantes > 0 ? diasFaltantes : 0;
-        }
-        
-        // Función para actualizar el contenido según la fecha
-        function actualizarContenidoPorFecha() {
-            for (let i = 0; i < paginas.length; i++) {
-                const bloqueado = document.getElementById(`contenidoBloqueado${i+1}`);
-                const real = document.getElementById(`contenidoReal${i+1}`);
-                const diasElement = document.getElementById(`diasFaltantes${i+1}`);
-                
-                // Para la página 1, siempre mostrar contenido real
-                if (i === 0) {
-                    if (bloqueado) bloqueado.style.display = 'none';
-                    if (real) real.style.display = 'block';
-                } else {
-                    if (estaDesbloqueada(i)) {
-                        // Mostrar contenido real
-                        if (bloqueado) bloqueado.style.display = 'none';
-                        if (real) real.style.display = 'block';
-                    } else {
-                        // Mostrar mensaje de "próximamente"
-                        if (bloqueado) bloqueado.style.display = 'block';
-                        if (real) real.style.display = 'none';
-                        
-                        // Actualizar contador de días
-                        if (diasElement) {
-                            const diasFaltantes = calcularDiasFaltantes(i);
-                            diasElement.textContent = `${diasFaltantes} día${diasFaltantes !== 1 ? 's' : ''}`;
-                        }
-                    }
-                }
-            }
-        }
-        
-        // Crear indicadores
-        function crearIndicadores() {
-            indicadores.innerHTML = '';
-            paginas.forEach((_, index) => {
-                const indicador = document.createElement('div');
-                indicador.className = 'indicador';
-                
-                if (index === paginaActual) {
-                    indicador.classList.add('activo');
-                }
-                
-                // Marcar indicadores de páginas pendientes
-                if (index > 0 && !estaDesbloqueada(index)) {
-                    indicador.classList.add('pendiente');
-                }
-                
-                indicador.addEventListener('click', () => irAPagina(index));
-                indicadores.appendChild(indicador);
-            });
-        }
-        
-        // Ir a una página específica
-        function irAPagina(numero) {
-            // Ocultar todas las páginas
-            paginas.forEach(pagina => {
-                pagina.classList.remove('activa');
-            });
-            
-            // Mostrar la página solicitada
-            paginas[numero].classList.add('activa');
-            paginaActual = numero;
-            
-            // Actualizar botones
-            btnAnterior.style.display = paginaActual === 0 ? 'none' : 'flex';
-            btnSiguiente.style.display = paginaActual === paginas.length - 1 ? 'none' : 'flex';
-            
-            // Actualizar indicadores
-            document.querySelectorAll('.indicador').forEach((ind, index) => {
-                ind.classList.toggle('activo', index === numero);
-            });
-        }
-        
-        // Siguiente página
-        btnSiguiente.addEventListener('click', () => {
-            if (paginaActual < paginas.length - 1) {
-                irAPagina(paginaActual + 1);
-            }
+            container.appendChild(pagina);
+            fechaDesbloqueo[cont-1] = item.fecha;
+            crear_pagina(pagina, item.texto, cont);
+            cont++;
         });
         
-        // Página anterior
-        btnAnterior.addEventListener('click', () => {
-            if (paginaActual > 0) {
-                irAPagina(paginaActual - 1);
-            }
-        });
+        // Configurar navegación
+        const paginaInicial = encontrarPaginaInicial();
+        paginaActual = paginaInicial;
+        document.getElementById("pagina" + paginaInicial).style.display = "flex";
+        configurarNavegacion(datos.length);
+        actualizarBotones();
         
-        // Navegación con teclado
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'ArrowRight' && paginaActual < paginas.length - 1) {
-                irAPagina(paginaActual + 1);
-            } else if (e.key === 'ArrowLeft' && paginaActual > 0) {
-                irAPagina(paginaActual - 1);
-            }
-        });
-        
-        // Actualizar el contador cada día
-        function actualizarContadoresDiarios() {
-            actualizarContenidoPorFecha();
-            crearIndicadores();
+    } else {
+        container.textContent = 'No hay datos disponibles. Verifique el archivo config.js.';
+    }
+    
+    function configurarNavegacion(totalPaginas) {
+    const btnAnterior = document.getElementById('btnAnterior');
+    const btnSiguiente = document.getElementById('btnSiguiente');
+    
+    // Actualizar estado inicial de botones
+    actualizarBotones();
+    
+    btnAnterior.addEventListener('click', function() {
+        if (paginaActual > 1) {
+            // Ocultar página actual
+            document.getElementById("pagina" + paginaActual).style.display = "none";
+            paginaActual--;
             
-            // Recalcular cada 24 horas
-            setTimeout(actualizarContadoresDiarios, 24 * 60 * 60 * 1000);
+            // Mostrar página anterior
+            document.getElementById("pagina" + paginaActual).style.display = "flex";
+            
+            // Actualizar estado de botones
+            actualizarBotones();
         }
-        
-        // Inicializar
-        actualizarContenidoPorFecha();
-        crearIndicadores();
-        irAPagina(0);
-        
-        // Iniciar actualización diaria
-        actualizarContadoresDiarios();
+    });
+    
+    btnSiguiente.addEventListener('click', function() {
+        if (paginaActual < totalPaginas) {
+            // Ocultar página actual
+            document.getElementById("pagina" + paginaActual).style.display = "none";
+            paginaActual++;
+            
+            // Mostrar página siguiente
+            document.getElementById("pagina" + paginaActual).style.display = "flex";
+            
+            // Actualizar estado de botones
+            actualizarBotones();
         }
-        //==========================================================================================================================================================
-        //==========================================================================================================================================================     
+    });
+    
+    function actualizarBotones() {
+        // Deshabilitar botón anterior si estamos en la primera página
+        btnAnterior.disabled = (paginaActual === 1);
+        
+        // Deshabilitar botón siguiente si estamos en la última página
+        // O si estamos en la página 18 y es antes del 14 de febrero de 2026
+        const fechaActual = new Date();
+        fechaActual.setHours(0, 0, 0, 0);
+        
+        if (paginaActual === totalPaginas) {
+            // Última página - deshabilitar siguiente
+            btnSiguiente.disabled = true;
+        } else if (fechaActual < new Date('2026-02-14') && paginaActual === 18) {
+            // Página 18 y es antes del 14 de febrero 2026
+            btnSiguiente.disabled = true;
+        } else {
+            btnSiguiente.disabled = false;
+        }
+    }
+    
+    verificarFechasDesbloqueo();
+}
+});
 
-        //==========================================================================================================================================================
-        //Animacion de texto
-        //==========================================================================================================================================================
-        {
-            function animar_texto(texto, texto_animado){
-            const contenedor = document.getElementById(texto_animado);
-            
-            // Limpiar contenedor
-            contenedor.innerHTML = '';
-            
-            // Contador lineal de letras (sin importar palabras)
-            let contadorLetras = 0;
-            
-            const palabras = texto.split(' ');
-            
-            palabras.forEach((palabra, palabraIndex) => {
-                // Contenedor para palabra completa
-                const palabraSpan = document.createElement('span');
-                palabraSpan.className = 'palabra-animada-container';
-                palabraSpan.style.display = 'inline-block';
-                palabraSpan.style.whiteSpace = 'nowrap';
-                
-                // Añadir letras con retardo lineal
-                for (let i = 0; i < palabra.length; i++) {
-                    const letraSpan = document.createElement('span');
-                    letraSpan.className = 'letra-animada';
-                    letraSpan.textContent = palabra[i];
-                    letraSpan.style.display = 'inline-block';
-                    letraSpan.style.opacity = '0';
-                    letraSpan.style.transform = 'translate(-3px,-20px)';
-                    letraSpan.style.transition = 'all 0.3s ease';
-                    
-                    // Retardo LINEAL - cada letra tiene su propio delay secuencial
-                    letraSpan.style.transitionDelay = `${contadorLetras * 0.08}s`;
-                    contadorLetras++;
-                    
-                    palabraSpan.appendChild(letraSpan);
-                }
-                
-                contenedor.appendChild(palabraSpan);
-                
-                // Añadir espacio (usando un span especial)
-                if (palabraIndex < palabras.length - 1) {
-                    const espacio = document.createElement('span');
-                    espacio.className = 'espacio-animado';
-                    espacio.innerHTML = '&nbsp;';
-                    espacio.style.whiteSpace = 'nowrap';
-                    
-                    // El espacio también se anima
-                    espacio.style.opacity = '0';
-                    espacio.style.transform = 'translateY(20px)';
-                    espacio.style.transition = 'all 0.3s ease';
-                    espacio.style.transitionDelay = `${contadorLetras * 0.08}s`;
-                    contadorLetras++;
-                    
-                    contenedor.appendChild(espacio);
-                }
-            });
-            
-            // Animar TODAS las letras y espacios
-            setTimeout(() => {
-                document.querySelectorAll('.letra-animada, .espacio-animado').forEach(elemento => {
-                    elemento.style.opacity = '1';
-                    elemento.style.transform = 'translateY(0)';
-                });
-            }, 500);
-            }
-            const txt_page1 = "Para ti, en quien mi mundo encuentra su razón de ser. Acompañame en estos 30 días de pensmientos, agradecimientos, recuerdos y deseos para nuestro futuro.";
-            animar_texto(txt_page1, "txt_page1")
-        }
-        //==========================================================================================================================================================
-        //==========================================================================================================================================================
+function crear_pagina(pagina, texto, cont) {
+    //crear contenido real
+    const contenido = document.createElement('div');
+    const text = document.createElement('div');
+    contenido.className = "contenido";
+    text.className = "texto-animado";
+    text.textContent = texto;
+    pagina.appendChild(contenido);
+    contenido.appendChild(text);
+    
+    //crear contenido bloqueado
+    const contenido_bloqueado = document.createElement('div');
+    pagina.appendChild(contenido_bloqueado);
+    contenido_bloqueado.setAttribute("id", "contenidoBloqueado" + cont);
+    contenido_bloqueado.className = "bloqueado";
+    
+    const p1 = document.createElement('p');
+    const p2 = document.createElement('p');
+    const p3 = document.createElement('p');
+    const p4 = document.createElement('p');
+    const dias = document.createElement('div');
+    
+    p1.textContent = "Esta página estará disponible a partir del:";
+    contenido_bloqueado.appendChild(p1);
+    p2.textContent = formatearFecha(fechaDesbloqueo[cont-1]);
+    contenido_bloqueado.appendChild(p2);
+    p3.textContent = "Faltan:";
+    contenido_bloqueado.appendChild(p3);
+    dias.className = "dias-faltantes";
+    dias.setAttribute("id", "diasFaltantes" + cont);
+    contenido_bloqueado.appendChild(dias);
+    p4.textContent = "para que puedas ver este mensaje.";
+    contenido_bloqueado.appendChild(p4);
+}
 
-        //==========================================================================================================================================================
-        //Script loader
-        //==========================================================================================================================================================
-        {
-        let resourcesLoaded = false;
-        let loaderHidden = false;
-        const criticalResources = [
-            'https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css',
-            'https://code.jquery.com/jquery-3.6.0.min.js'
-        ];
-        let loadedCount = 0;
-        function checkResourceLoaded(url) {
-            return new Promise((resolve) => {
-                if (url.endsWith('.css')) {
-                    const links = document.querySelectorAll(`link[href="${url}"]`);
-                    if (links.length > 0) {
-                        links[0].onload = () => {
-                            loadedCount++;
-                            resolve();
-                        };
-                        links[0].onerror = () => {
-                            console.warn(`Error cargando: ${url}`);
-                            loadedCount++;
-                            resolve();
-                        };
-                    }
-                }
-                else if (url.endsWith('.js')) {
-                    const scripts = document.querySelectorAll(`script[src="${url}"]`);
-                    if (scripts.length > 0) {
-                        scripts[0].onload = () => {
-                            loadedCount++;
-                            resolve();
-                        };
-                        scripts[0].onerror = () => {
-                            console.warn(`Error cargando: ${url}`);
-                            loadedCount++;
-                            resolve();
-                        };
-                    }
-                }
-            });
+function formatearFecha(fechaStr) {
+    const partes = fechaStr.split('-');
+    if (partes.length === 3) {
+        let mes;
+        if(partes[1] === "01"){mes = "enero"}
+        if(partes[1] === "02"){mes = "febrero"}
+        if(partes[1] === "03"){mes = "marzo"}
+        if(partes[1] === "04"){mes = "abril"}
+        if(partes[1] === "05"){mes = "mayo"}
+        if(partes[1] === "06"){mes = "junio"}
+        if(partes[1] === "07"){mes = "julio"}
+        if(partes[1] === "08"){mes = "agosto"}
+        if(partes[1] === "09"){mes = "septiebre"}
+        if(partes[1] === "10"){mes = "octubre"}
+        if(partes[1] === "11"){mes = "noviembre"}
+        if(partes[1] === "12"){mes = "diciembre"}
+        
+        return `${partes[2]} de ${mes} del ${partes[0]}`;
+    }
+    return fechaStr; // Devolver original si no tiene el formato esperado
+}
+
+function verificarFechasDesbloqueo() {
+    const fechaActual = new Date();
+    fechaActual.setHours(0, 0, 0, 0);
+    
+    datos.forEach((item, index) => {
+        const fechaDesbloqueoDate = new Date(item.fecha);
+        fechaDesbloqueoDate.setHours(0, 0, 0, 0);
+        
+        const pagina = document.getElementById("pagina" + (index + 1));
+        const contenido = pagina.querySelector(".contenido");
+        const contenidoBloqueado = document.getElementById("contenidoBloqueado" + (index + 1));
+        
+        if (fechaActual >= fechaDesbloqueoDate) {
+            contenido.style.display = "block";
+            contenidoBloqueado.style.display = "none";
+        } else {
+            contenido.style.display = "none";
+            contenidoBloqueado.style.display = "block";
+            actualizarContadorRegresivo(item.fecha, index + 1);
         }
-        function hideLoader() {
-            if (!loaderHidden) {
-                const loader = document.getElementById('loader');
-                loader.classList.add('hidden');
-                document.body.classList.add('loaded');
-                setTimeout(() => {
-                    loader.style.display = 'none';
-                }, 500);
-                
-                loaderHidden = true;
+    });
+}
+
+function actualizarContadorRegresivo(fechaStr, numeroPagina) {
+    const fechaDesbloqueo = new Date(fechaStr);
+    const diasElement = document.getElementById("diasFaltantes" + numeroPagina);
+    
+    function actualizar() {
+        const ahora = new Date();
+        const diferencia = fechaDesbloqueo - ahora;
+        
+        if (diferencia <= 0) {
+            const pagina = document.getElementById("pagina" + numeroPagina);
+            const contenido = pagina.querySelector(".contenido");
+            const contenidoBloqueado = document.getElementById("contenidoBloqueado" + numeroPagina);
+            
+            contenido.style.display = "block";
+            contenidoBloqueado.style.display = "none";
+            diasElement.textContent = "¡Ya está disponible!";
+            return;
+        }
+        
+        const dias = Math.ceil(diferencia / (1000 * 60 * 60 * 24));
+        diasElement.textContent = dias + (dias === 1 ? " día" : " días");
+        setTimeout(actualizar, 1000 * 60 * 60);
+    }
+    
+    actualizar();
+}
+
+function encontrarPaginaInicial() {
+    const fechaActual = new Date();
+    fechaActual.setHours(0, 0, 0, 0);
+    
+    let paginaMasCercana = 1; // Por defecto, la primera página
+    let diferenciaMinima = Infinity; // Inicializar con un valor muy grande
+    
+    for (let i = 0; i < datos.length; i++) {
+        const fechaDesbloqueoDate = new Date(datos[i].fecha);
+        fechaDesbloqueoDate.setHours(0, 0, 0, 0);
+        
+        // Si la fecha ya pasó, esta página está desbloqueada
+        if (fechaActual >= fechaDesbloqueoDate) {
+            // Calcular diferencia en días (positiva porque ya pasó)
+            const diferenciaDias = Math.abs(fechaActual - fechaDesbloqueoDate);
+            
+            // Si esta página está más cerca que la anterior encontrada
+            if (diferenciaDias < diferenciaMinima) {
+                diferenciaMinima = diferenciaDias;
+                paginaMasCercana = i + 1; // +1 porque las páginas empiezan en 1
             }
         }
-        async function loadCriticalResources() {
-            const promises = criticalResources.map(url => checkResourceLoaded(url));
-            await Promise.allSettled(promises);
-            console.log(`Recursos cargados: ${loadedCount}/${criticalResources.length}`);
-            resourcesLoaded = true;
-            hideLoader();
-        }
-        function startTimeout() {
-            const maxWaitTime = 20000; // 10 segundos máximo
-            setTimeout(() => {
-                if (!resourcesLoaded) {
-                    console.log('Tiempo máximo alcanzado, ocultando loader');
-                    hideLoader();
-                }
-            }, maxWaitTime);
-        }
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM cargado');
-        });
-        window.addEventListener('load', () => {
-            console.log('Todos los recursos cargados');
-            if (!loaderHidden) {
-                hideLoader();
-            }
-        });
-        window.addEventListener('load', loadCriticalResources);
-        startTimeout();
-        function checkImagesLoaded() {
-            const images = document.querySelectorAll('img');
-            let imagesLoaded = 0;
-            images.forEach(img => {
-                if (img.complete) {
-                    imagesLoaded++;
-                } else {
-                    img.addEventListener('load', () => {
-                        imagesLoaded++;
-                        if (imagesLoaded === images.length) {
-                            console.log('Todas las imágenes cargadas');
-                        }
-                    });
-                    img.addEventListener('error', () => {
-                        imagesLoaded++;
-                        console.warn('Error cargando imagen:', img.src);
-                    });
-                }
-            });
-        }
-        document.addEventListener('DOMContentLoaded', checkImagesLoaded);
-        }
+    }
+    
+    // Si encontramos al menos una página desbloqueada, devolver la más cercana
+    // Si ninguna está desbloqueada (diferenciaMinima sigue siendo Infinity), devolver la primera
+    return paginaMasCercana;
+}
+
+
+
+//==========================================================================================================================================================
+//==========================================================================================================================================================
+
+
+

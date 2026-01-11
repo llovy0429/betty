@@ -1,93 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>dsadasdsad</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Lista de Fechas y Costos</title>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <script src="config.js" defer></script>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <div id="loader">
-        <div class="custom-loader"></div>
+    <div id="pagina-container"></div>
+    <div class="botones">    
+        <button class="nav-btn" id="btnAnterior"><span class="material-icons">navigate_before</span></button>
+        <button class="nav-btn" id="btnSiguiente"><span class="material-icons">navigate_next</span></button>
     </div>
-    <div class="bg_heart">
-        <div class="pagina-container">
-            <!-- Página 1 -->
-            <div class="pagina activa" id="pagina1">
-                <div class="contenido">
-                    <!-- Marco decorativo para San Valentín -->
-                    <div class="marco-amor">
-                        <div class="contenido-texto">
-                            <div class="texto-animado" id="txt_page1"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Página 2 -->
-            <div class="pagina" id="pagina2">
-                <div class="contenido-bloqueado" id="contenidoBloqueado2" style="display: none;">
-                    <div class="icono-candado">🔒</div>
-                    <h2>Contenido Próximamente</h2>
-                    <p>Esta página estará disponible a partir del:</p>
-                    <p><strong>1 de Febrero de 2026</strong></p>
-                    <p>Faltan:</p>
-                    <div class="dias-faltantes" id="diasFaltantes2"></div>
-                    <p>para que puedas ver este mensaje.</p>
-                </div>
-                <div class="contenido" id="contenidoReal2" style="display: none;">
-                    <h1>Página 2</h1>
-                    <p>Esta es la segunda página.</p>
-                    <p>Más contenido aquí...</p>
-                </div>
-            </div>
-            
-            <!-- Página 3 -->
-            <div class="pagina" id="pagina3">
-                <div class="contenido-bloqueado" id="contenidoBloqueado3" style="display: none;">
-                    <div class="icono-candado">🔒</div>
-                    <h2>Contenido Próximamente</h2>
-                    <p>Esta página estará disponible a partir del:</p>
-                    <p><strong>2 de Febrero de 2026</strong></p>
-                    <p>Faltan:</p>
-                    <div class="dias-faltantes" id="diasFaltantes3"></div>
-                    <p>para que puedas ver este mensaje.</p>
-                </div>
-                <div class="contenido" id="contenidoReal3" style="display: none;">
-                    <h1>Página 3</h1>
-                    <p>Esta es la tercera página.</p>
-                    <p>Casi terminamos...</p>
-                </div>
-            </div>
-            
-            <!-- Página 4 -->
-            <div class="pagina" id="pagina4">
-                <div class="contenido-bloqueado" id="contenidoBloqueado4" style="display: none;">
-                    <div class="icono-candado">🔒</div>
-                    <h2>Contenido Próximamente</h2>
-                    <p>Esta página estará disponible a partir del:</p>
-                    <p><strong>3 de Febrero de 2026</strong></p>
-                    <p>Faltan:</p>
-                    <div class="dias-faltantes" id="diasFaltantes4"></div>
-                    <p>para que puedas ver este mensaje.</p>
-                </div>
-                <div class="contenido" id="contenidoReal4" style="display: none;">
-                    <h1>Página 4</h1>
-                    <p>Esta es la última página.</p>
-                    <p>¡Fin del contenido!</p>
-                </div>
-            </div>
-            </div>
-        <div class="botones">    
-            <button class="nav-btn" id="btnAnterior" style="right: 100px; display: none;"><span class="material-icons">navigate_before</span></button>
-            <div class="indicadores" id="indicadores"></div>
-            <button class="nav-btn" id="btnSiguiente"><span class="material-icons">navigate_next</span></button>
-        </div>
-    </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
     <script src="script.js"></script>
 </body>
 </html>
