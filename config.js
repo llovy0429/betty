@@ -1,6 +1,6 @@
 // config.js
 const datos = [
-    { fecha: '2025-01-01', texto: "lorem ipsum1" },
+    { fecha: '2025-01-01', texto: ".nav-btn {position: fixed;bottom: 5vw;right: 5vw;background: #ff54be;color: white;width: 12vmin;height: 12vmin;border-radius: 50%;border: none;font-size: 24px;" },
     { fecha: '2026-01-29', texto: "lorem ipsum2" },
     { fecha: '2026-01-30', texto: "lorem ipsum3" },
     { fecha: '2026-01-31', texto: "lorem ipsum4" },
