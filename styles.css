@@ -1,7 +1,7 @@
 html,body{background-color: #f1941a;padding: 0; margin: 0; z-index: -1;}
 
 .container {margin: 0;padding: 0;}
-.contenido {background-color: rgb(243, 255, 255);border-radius: 15px;box-shadow: 0px 0px 30px#000000c7;
+.contenido {background-color: rgb(253, 234, 209);border-radius: 15px;box-shadow: 0px 0px 30px#000000c7;
     position: relative;display: flex;justify-content: center;align-items: center; 
     padding: 30px 20px; margin: 20px;}
 .pagina {width: 100vw;height: 100vh;position: absolute;top: 0;left: 0;display: none;margin:0;padding: 0;
@@ -9,19 +9,19 @@ html,body{background-color: #f1941a;padding: 0; margin: 0; z-index: -1;}
 .pagina.activa {display:flex;}
 
 .botones {display: flex; justify-content:left;}
-.nav-btn {position: fixed;bottom: 5vw;right: 5vw;background: #ff54be;color: white;width: 12vmin;height: 12vmin;border-radius: 50%;border: none;font-size: 24px;
+.nav-btn {position: fixed;bottom: 5vw;right: 5vw;background: #f38722;color: white;width: 12vmin;height: 12vmin;border-radius: 50%;border: none;font-size: 24px;
     cursor: pointer;display: flex;align-items: center;justify-content: center;box-shadow: 0 3px 10px rgba(0,0,0,0.2);transition: all 0.3s;}  
 #btnAnterior{left: 5vw;}   
 #btnSiguiente{background-image: url(https://es.pngtree.com/freepng/vector-right-arrow-icon_4184716.html);}
-.nav-btn:hover {background: #ff23ab;transform: scale(1.1);}
+.nav-btn:hover {background: #f07d11;transform: scale(1.1);}
 .nav-btn:disabled {background: #ccc;cursor: not-allowed;transform: none;}
-.bloqueado {max-width: 800px;background: #fff8e1;padding: 30px;border-radius: 10px;box-shadow: 0 5px 15px rgba(0,0,0,0.1);border: 2px solid #ffd54f;
+.bloqueado {max-width: 800px;background: #ff943c63;padding: 30px;border-radius: 10px;box-shadow: 0 5px 15px rgba(0,0,0,0.1);border: 2px solid #ffd54f;
     margin: 15px; font-size: 1.5rem;font-weight: bold;color: #1b2530;}
-.bloqueado>*{margin: 0; margin-top: 5px;}
-.dias-faltantes {font-size: 28px;font-weight: bold;color: #4CAF50;padding: 10px;background: #f1f8e9;border-radius: 5px;display: inline-block;}
+.bloqueado>*{margin: 0; margin-top: 5px; font-family: "Imperial Script"; line-height: 30px;}
+.dias-faltantes {font-size: 28px;font-weight: bold;color: #4CAF50;padding: 10px;background: #f1f8e900;border-radius: 5px;display: inline-block;}
 
-.texto-animado {font-size: 1.5rem;font-weight: 500;text-align: left;padding: 0; margin: 0;
-                font-family: 'Mea Culpa', cursive;color: #bd0010;}
+.texto-animado {font-size: 1.8rem;font-weight: 500;text-align: left;padding: 0; margin: 0;
+                font-family: 'Mea Culpa', cursive;color: #bd0010; line-height: 1.7rem;}
 
 .pagina {background:#ffb34f url("src/naranja/fondo16.jpg"); background-size: cover; background-repeat: no-repeat;}
 .fecha-pagina {font-family: "Mea Culpa"; font-size: 2.4rem; margin-bottom: 20px; font-weight: 900; color: #bd0010;}

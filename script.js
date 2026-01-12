@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             paginaActual--;
             
             // Mostrar página anterior
-            document.getElementById("pagina" + paginaActual).children[0].children[1].innerHTML = '';
+            document.getElementById("pagina" + paginaActual).children[1].children[1].innerHTML = '';
             document.getElementById("pagina" + paginaActual).style.display = "flex";
             
             // Animar texto de la nueva página
@@ -81,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
             paginaActual++;
             
             // Mostrar página siguiente
-            document.getElementById("pagina" + paginaActual).children[0].children[1].innerHTML = '';
+            document.getElementById("pagina" + paginaActual).children[1].children[1].innerHTML = '';
             document.getElementById("pagina" + paginaActual).style.display = "flex";
             
             // Animar texto de la nueva página
@@ -134,10 +134,10 @@ function crear_pagina(pagina, texto, cont) {
     fecha_pagina.setAttribute("id", "fechaPagina" + cont);
     fecha_pagina.textContent = formatearFecha(fechaDesbloqueo[cont-1]);
     text.setAttribute("id", "textoAnimado" + cont); // Agregar ID único para cada texto
+    pagina.appendChild(agregar_animacion());
     pagina.appendChild(contenido);
     contenido.appendChild(fecha_pagina)
     contenido.appendChild(text);
-    
     // Guardar el texto para animarlo después
     text.dataset.textoOriginal = texto;
     
@@ -165,6 +165,15 @@ function crear_pagina(pagina, texto, cont) {
     p4.textContent = "para que puedas ver este mensaje.";
     contenido_bloqueado.appendChild(p4);
 }
+
+function agregar_animacion(){
+    const animacion = document.createElement('dotlottie-wc');
+    animacion.setAttribute('src', animations[0]);
+    animacion.setAttribute('style', "width: 100px;height: 100px");
+    animacion.setAttribute('autoplay', '');
+    animacion.setAttribute('loop', '');
+    return animacion
+}    
 
 function formatearFecha(fechaStr) {
     const partes = fechaStr.split('-');
