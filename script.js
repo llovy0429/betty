@@ -62,6 +62,7 @@ document.addEventListener('DOMContentLoaded', function() {
             paginaActual--;
             
             // Mostrar página anterior
+            document.getElementById("pagina" + paginaActual).children[0].children[0].innerHTML = '';
             document.getElementById("pagina" + paginaActual).style.display = "flex";
             
             // Animar texto de la nueva página
@@ -79,6 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
             paginaActual++;
             
             // Mostrar página siguiente
+            document.getElementById("pagina" + paginaActual).children[0].children[0].innerHTML = '';
             document.getElementById("pagina" + paginaActual).style.display = "flex";
             
             // Animar texto de la nueva página
