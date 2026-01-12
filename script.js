@@ -14,6 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const pagina = document.createElement('div');
             pagina.className = "pagina";
             pagina.setAttribute("id", "pagina" + cont);
+            pagina.setAttribute('style', 'background:#ffb34f url('+seleccionarAleatorio(fondos)+');')
             
             // Solo la primera página será visible inicialmente
             pagina.style.display = "none";
@@ -63,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
             paginaActual--;
             
             // Mostrar página anterior
-            document.getElementById("pagina" + paginaActual).children[1].children[1].innerHTML = '';
+            document.getElementById("pagina" + paginaActual).children[0].children[2].innerHTML = '';
             document.getElementById("pagina" + paginaActual).style.display = "flex";
             
             // Animar texto de la nueva página
@@ -81,7 +82,7 @@ document.addEventListener('DOMContentLoaded', function() {
             paginaActual++;
             
             // Mostrar página siguiente
-            document.getElementById("pagina" + paginaActual).children[1].children[1].innerHTML = '';
+            document.getElementById("pagina" + paginaActual).children[0].children[2].innerHTML = '';
             document.getElementById("pagina" + paginaActual).style.display = "flex";
             
             // Animar texto de la nueva página
@@ -134,8 +135,8 @@ function crear_pagina(pagina, texto, cont) {
     fecha_pagina.setAttribute("id", "fechaPagina" + cont);
     fecha_pagina.textContent = formatearFecha(fechaDesbloqueo[cont-1]);
     text.setAttribute("id", "textoAnimado" + cont); // Agregar ID único para cada texto
-    pagina.appendChild(agregar_animacion());
     pagina.appendChild(contenido);
+    contenido.appendChild(agregar_animacion());
     contenido.appendChild(fecha_pagina)
     contenido.appendChild(text);
     // Guardar el texto para animarlo después
@@ -168,8 +169,9 @@ function crear_pagina(pagina, texto, cont) {
 
 function agregar_animacion(){
     const animacion = document.createElement('dotlottie-wc');
-    animacion.setAttribute('src', animations[0]);
-    animacion.setAttribute('style', "width: 100px;height: 100px");
+    animacion.setAttribute('src', seleccionarAleatorio(animations));
+    animacion.className = 'pagina-animacion';
+    //animacion.setAttribute('style', "width: 100px;height: 100px");
     animacion.setAttribute('autoplay', '');
     animacion.setAttribute('loop', '');
     return animacion
@@ -283,6 +285,14 @@ function encontrarPaginaInicial() {
 //Animaciones
 //==========================================================================================================================================================
 {
+function seleccionarAleatorio(array) {
+    if (!array || array.length === 0) {
+        return null;
+    }
+    const indiceAleatorio = Math.floor(Math.random() * array.length);
+    return array[indiceAleatorio];
+}
+
 function animar_texto(texto, texto_animado_id) {
     const contenedor = document.getElementById(texto_animado_id);
     if (!contenedor) return;

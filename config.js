@@ -29,3 +29,10 @@ const animations = [
     "https://lottie.host/ab3bc8e4-1194-4f89-848c-9c15ca0a814e/JAbk2IJDmI.lottie",
     "https://lottie.host/bd248aa2-d47e-4997-adb3-9e5941846699/cj75kDXNNN.lottie"
 ]
+
+const fondos = [
+        'src/naranja/fondo1.jpg', 'src/naranja/fondo2.jpg', 'src/naranja/fondo3.jpg', 'src/naranja/fondo4.jpg', 'src/naranja/fondo5.jpg',
+        'src/naranja/fondo6.jpg', 'src/naranja/fondo7.jpg', 'src/naranja/fondo8.jpg', 'src/naranja/fondo9.jpg', 'src/naranja/fondo10.jpg',
+        'src/naranja/fondo11.jpg', 'src/naranja/fondo12.jpg', 'src/naranja/fondo13.jpg', 'src/naranja/fondo14.jpg', 'src/naranja/fondo15.jpg',
+        'src/naranja/fondo16.jpg'
+    ];
