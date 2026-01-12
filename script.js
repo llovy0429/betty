@@ -170,18 +170,18 @@ function formatearFecha(fechaStr) {
     const partes = fechaStr.split('-');
     if (partes.length === 3) {
         let mes;
-        if(partes[1] === "01"){mes = "enero"}
-        if(partes[1] === "02"){mes = "febrero"}
-        if(partes[1] === "03"){mes = "marzo"}
-        if(partes[1] === "04"){mes = "abril"}
-        if(partes[1] === "05"){mes = "mayo"}
-        if(partes[1] === "06"){mes = "junio"}
-        if(partes[1] === "07"){mes = "julio"}
-        if(partes[1] === "08"){mes = "agosto"}
-        if(partes[1] === "09"){mes = "septiebre"}
-        if(partes[1] === "10"){mes = "octubre"}
-        if(partes[1] === "11"){mes = "noviembre"}
-        if(partes[1] === "12"){mes = "diciembre"}
+        if(partes[1] === "01"){mes = "Enero"}
+        if(partes[1] === "02"){mes = "Febrero"}
+        if(partes[1] === "03"){mes = "Marzo"}
+        if(partes[1] === "04"){mes = "Abril"}
+        if(partes[1] === "05"){mes = "Mayo"}
+        if(partes[1] === "06"){mes = "Junio"}
+        if(partes[1] === "07"){mes = "Julio"}
+        if(partes[1] === "08"){mes = "Agosto"}
+        if(partes[1] === "09"){mes = "Septiebre"}
+        if(partes[1] === "10"){mes = "Octubre"}
+        if(partes[1] === "11"){mes = "Noviembre"}
+        if(partes[1] === "12"){mes = "Diciembre"}
         
         return `${partes[2]} de ${mes} del ${partes[0]}`;
     }

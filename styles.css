@@ -20,14 +20,8 @@ html,body{background-color: #f1941a;padding: 0; margin: 0; z-index: -1;}
 .bloqueado>*{margin: 0; margin-top: 5px;}
 .dias-faltantes {font-size: 28px;font-weight: bold;color: #4CAF50;padding: 10px;background: #f1f8e9;border-radius: 5px;display: inline-block;}
 
-.texto-animado {font-size: 1rem;font-weight: bold;color: #1b2530;text-align: center;padding: 0; margin: 0;}
+.texto-animado {font-size: 1.5rem;font-weight: 500;text-align: left;padding: 0; margin: 0;
+                font-family: 'Mea Culpa', cursive;color: #bd0010;}
 
 .pagina {background:#ffb34f url("src/naranja/fondo16.jpg"); background-size: cover; background-repeat: no-repeat;}
-.fecha-pagina {font-size: 1.8rem; margin-bottom: 20px;}
-
-.the-nautigal {
-    font-family: 'MonteCarlo', cursive;
-    font-size: 2rem;
-    color: #e63946;
-    font-weight: bold;
-}
+.fecha-pagina {font-family: "Mea Culpa"; font-size: 2.4rem; margin-bottom: 20px; font-weight: 900; color: #bd0010;}
