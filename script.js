@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const pagina = document.createElement('div');
             pagina.className = "pagina";
             pagina.setAttribute("id", "pagina" + cont);
-            pagina.setAttribute('style', 'background:#ffb34f url('+seleccionarAleatorio(fondos)+');')
+            pagina.setAttribute('style', 'background:#f1941a url('+seleccionarAleatorio(fondos)+');')
             
             // Solo la primera página será visible inicialmente
             pagina.style.display = "none";
@@ -361,6 +361,7 @@ function animar_texto(texto, texto_animado_id) {
 }
 //==========================================================================================================================================================
 //==========================================================================================================================================================
+
 
 
 
