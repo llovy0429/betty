@@ -1,7 +1,7 @@
 // config.js
 const datos = [
     { fecha: '2025-01-01', texto: ".nav-btn {position: fixed;bottom: 5vw;right: 5vw;background: #ff54be;color: white;width: 12vmin;height: 12vmin;border-radius: 50%;border: none;font-size: 24px;" },
-    { fecha: '2025-01-29', texto: "Para mejorar los resultados futuros, es prioritario reforzar el inventario de piezas, optimizar los procesos de diagnóstico inicial y promover capacitaciones técnicas, especialmente en reparación de motherboards y dispositivos chinos. El desempeño de José Mario y Yoandry sirve como ejemplo de cómo la especialización y la atención meticulosa pueden elevar la calidad del trabajo, por lo que su experiencia podría aprovecharse para guiar al resto del " },
+    { fecha: '2025-01-29', texto: "A veces pienso en como seria estar con alguien "más fácil". Alguien sin nuestras heridas, sin nuestros complejos. Y la verdad es que probablemente sería más simple, menos peleas, menos trabajo, pero tambien seria menos profundo, menos real, menos transformador. Porque lo fácil no nos hace crecer, lo difícil si, y contigo he crecido de formas que nunca imaginé. Así que aunque sea trabajo duro, es el trabajo que elijo. Porque contigo me estoy convirtiendo en la mejor version de mi." },
     { fecha: '2026-01-30', texto: "lorem ipsum3" },
     { fecha: '2026-01-31', texto: "lorem ipsum4" },
     { fecha: '2026-02-01', texto: "lorem ipsum5" },
@@ -35,4 +35,5 @@ const fondos = [
         'src/naranja/fondo6.jpg', 'src/naranja/fondo7.jpg', 'src/naranja/fondo8.jpg', 'src/naranja/fondo9.jpg', 'src/naranja/fondo10.jpg',
         'src/naranja/fondo11.jpg', 'src/naranja/fondo12.jpg', 'src/naranja/fondo13.jpg', 'src/naranja/fondo14.jpg', 'src/naranja/fondo15.jpg',
         'src/naranja/fondo16.jpg'
+
     ];
