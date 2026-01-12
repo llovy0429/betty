@@ -1,7 +1,7 @@
 // config.js
 const datos = [
-    { fecha: '2025-01-01', texto: ".nav-btn {position: fixed;bottom: 5vw;right: 5vw;background: #ff54be;color: white;width: 12vmin;height: 12vmin;border-radius: 50%;border: none;font-size: 24px;" },
-    { fecha: '2025-01-29', texto: "A veces pienso en como seria estar con alguien "más fácil". Alguien sin nuestras heridas, sin nuestros complejos. Y la verdad es que probablemente sería más simple, menos peleas, menos trabajo, pero tambien seria menos profundo, menos real, menos transformador. Porque lo fácil no nos hace crecer, lo difícil si, y contigo he crecido de formas que nunca imaginé. Así que aunque sea trabajo duro, es el trabajo que elijo. Porque contigo me estoy convirtiendo en la mejor version de mi." },
+    { fecha: '2025-01-12', texto: "Quiero confesarte que este mes ha tenido días tan duros como hermosos, verte tan desconectada de mi me partía el alma, intentar día tras día llegar a ti que poco a poco ibas cediendo pero cuando me dabas un stop lloraba por dentro, me hacía pedazos, pero la constancia está danndo frutos, el proceso ha sido hermoso, estamos aprendiendo de nuestro pasado, viviendo el presente y construyendo el futuro, yo me siento super feliz, espero que tu tambien lo estés.<br><br>FELIZ 1ER MES DE RECONEXION EN NUESTRA RELACIÓN" },
+    { fecha: '2025-01-29', texto: 'A veces pienso en como seria estar con alguien "más fácil". Alguien sin nuestras heridas, sin nuestros complejos. Y la verdad es que probablemente sería más simple, menos peleas, menos trabajo, pero tambien seria menos profundo, menos real, menos transformador. Porque lo fácil no nos hace crecer, lo difícil si, y contigo he crecido de formas que nunca imaginé. Así que aunque sea trabajo duro, es el trabajo que elijo. Porque contigo me estoy convirtiendo en la mejor version de mi.' },
     { fecha: '2026-01-30', texto: "lorem ipsum3" },
     { fecha: '2026-01-31', texto: "lorem ipsum4" },
     { fecha: '2026-02-01', texto: "lorem ipsum5" },
@@ -37,3 +37,4 @@ const fondos = [
         'src/naranja/fondo16.jpg'
 
     ];
+
