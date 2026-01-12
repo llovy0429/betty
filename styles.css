@@ -1,7 +1,7 @@
 html,body{background-color: #f1941a;padding: 0; margin: 0; z-index: -1;}
 
 .container {margin: 0;padding: 0;}
-.contenido {background-color: rgb(253, 202, 135);border-radius: 15px;box-shadow: 0px 0px 30px#000000c7;
+.contenido {background-color: #f1941a;border-radius: 15px;box-shadow: 0px 0px 30px#000000c7;
     position: relative;display: flex;justify-content: center;align-items: center; 
     padding: 30px 20px; margin: 20px;}
 .pagina {width: 100vw;height: 100vh;position: absolute;top: 0;left: 0;display: none;margin:0;padding: 0;
