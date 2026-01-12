@@ -1,8 +1,8 @@
 // config.js
 const datos = [
-    { fecha: '2025-01-12', texto: "Quiero confesarte que este mes ha tenido días tan duros como hermosos, verte tan desconectada de mi me partía el alma, intentar día tras día llegar a ti que poco a poco ibas cediendo pero cuando me dabas un stop lloraba por dentro, me hacía pedazos, pero la constancia está danndo frutos, el proceso ha sido hermoso, estamos aprendiendo de nuestro pasado, viviendo el presente y construyendo el futuro, yo me siento super feliz, espero que tu tambien lo estés.<br><br>FELIZ 1ER MES DE RECONEXION EN NUESTRA RELACIÓN" },
-    { fecha: '2025-01-29', texto: 'A veces pienso en como seria estar con alguien "más fácil". Alguien sin nuestras heridas, sin nuestros complejos. Y la verdad es que probablemente sería más simple, menos peleas, menos trabajo, pero tambien seria menos profundo, menos real, menos transformador. Porque lo fácil no nos hace crecer, lo difícil si, y contigo he crecido de formas que nunca imaginé. Así que aunque sea trabajo duro, es el trabajo que elijo. Porque contigo me estoy convirtiendo en la mejor version de mi.' },
-    { fecha: '2026-01-30', texto: "lorem ipsum3" },
+    { fecha: '2025-01-12', texto: "Como un testimonio de cada día de esta increíble aventura, he reunido estas pequeñas sensaciones. Cada una guarda un pensamiento, un agradecimiento, un recuerdo o un deseo para nuestro futuro. No son solo postales, son páginas sueltas de nuestra historia, un recordatorio de que, incluso en lo cotidiano, hay magia cuando estás tú. Para ti, en quien mi mundo encuentra su razón de ser. Con todo mi amor, ahora y siempre." },
+    { fecha: '2026-01-29', texto: 'Quiero confesarte que este mes ha tenido días tan duros como hermosos, verte tan desconectada de mi me partía el alma, intentar día tras día llegar a ti que poco a poco ibas cediendo pero cuando me dabas un stop lloraba por dentro, me hacía pedazos, pero la constancia está danndo frutos, el proceso ha sido hermoso, estamos aprendiendo de nuestro pasado, viviendo el presente y construyendo el futuro, yo me siento super feliz, espero que tu tambien lo estés. Feliz 1er mes de reconexión de nuestra relación.' },
+    { fecha: '2026-01-30', texto: 'A veces pienso en como seria estar con alguien "más fácil". Alguien sin nuestras heridas, sin nuestros complejos. Y la verdad es que probablemente sería más simple, menos peleas, menos trabajo, pero tambien seria menos profundo, menos real, menos transformador. Porque lo fácil no nos hace crecer, lo difícil si, y contigo he crecido de formas que nunca imaginé. Así que aunque sea trabajo duro, es el trabajo que elijo. Porque contigo me estoy convirtiendo en la mejor version de mi.' },
     { fecha: '2026-01-31', texto: "lorem ipsum4" },
     { fecha: '2026-02-01', texto: "lorem ipsum5" },
     { fecha: '2026-02-02', texto: "lorem ipsum6" },
@@ -37,4 +37,5 @@ const fondos = [
         'src/naranja/fondo16.jpg'
 
     ];
+
 
