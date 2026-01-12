@@ -21,3 +21,11 @@ const datos = [
     { fecha: '2026-02-15', texto: "lorem ipsum19" },
     { fecha: '2026-02-16', texto: "lorem ipsum20" }
 ];
+
+const animations = [
+    "https://lottie.host/169a0083-37cd-4b31-82c9-97c86ca00b70/SWBTaXTCtl.lottie",
+    "https://lottie.host/bbaf282b-8de5-4918-999a-3b616dc5035a/b0kn7qLx41.lottie",
+    "https://lottie.host/958a7904-c36c-4b3b-8cfa-e2aa2431c96d/pfQPa0qnBo.lottie",
+    "https://lottie.host/ab3bc8e4-1194-4f89-848c-9c15ca0a814e/JAbk2IJDmI.lottie",
+    "https://lottie.host/bd248aa2-d47e-4997-adb3-9e5941846699/cj75kDXNNN.lottie"
+]
