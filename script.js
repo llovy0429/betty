@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const pagina = document.createElement('div');
             pagina.className = "pagina";
             pagina.setAttribute("id", "pagina" + cont);
-            pagina.setAttribute('style', 'background:#f1941a url('+seleccionarAleatorio(fondos)+');')
+            pagina.setAttribute('style', 'background:#f1941a url('+seleccionarAleatorio(fondos)+');background-size: cover; background-repeat: no-repeat;')
             
             // Solo la primera página será visible inicialmente
             pagina.style.display = "none";
