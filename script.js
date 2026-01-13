@@ -268,7 +268,7 @@ function encontrarPaginaInicial() {
             // Si esta página está más cerca que la anterior encontrada
             if (diferenciaDias <= diferenciaMinima) {
                 diferenciaMinima = diferenciaDias;
-                paginaMasCercana = i+1; // +1 porque las páginas empiezan en 1
+                paginaMasCercana = i; // +1 porque las páginas empiezan en 1
             }
         }
     }
