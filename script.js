@@ -211,7 +211,7 @@ function verificarFechasDesbloqueo() {
         const contenido = pagina.querySelector(".contenido");
         const contenidoBloqueado = document.getElementById("contenidoBloqueado" + (index + 1));
         
-        if (fechaActual >= fechaDesbloqueoDate) {
+        if (fechaActual > fechaDesbloqueoDate) {
             contenido.style.display = "block";
             contenidoBloqueado.style.display = "none";
         } else {
@@ -266,9 +266,9 @@ function encontrarPaginaInicial() {
             const diferenciaDias = Math.abs(fechaActual - fechaDesbloqueoDate);
             
             // Si esta página está más cerca que la anterior encontrada
-            if (diferenciaDias < diferenciaMinima) {
+            if (diferenciaDias <= diferenciaMinima) {
                 diferenciaMinima = diferenciaDias;
-                paginaMasCercana = i; // +1 porque las páginas empiezan en 1
+                paginaMasCercana = i+1; // +1 porque las páginas empiezan en 1
             }
         }
     }
