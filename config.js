@@ -16,7 +16,7 @@ const datos = [
     { fecha: '2026-01-24', texto: "Me encanta la serenidad que traes contigo. Es como si tu presencia fuera un recordatorio constante de que no estoy solo, de que hay un corazón que late al ritmo del mío, dispuesto a caminar conmigo a pesar de las dudas y los miedos. Tu ternura me ha enseñado que amar no es perderse, sino encontrarse en el otro con más claridad." },
     { fecha: '2026-01-25', texto: "Hay algo en tus gestos, en tu forma de escucharme, en cómo sostienes mis palabras como si fueran valiosas. Eso me desnuda el alma de una manera tan única que casi da vértigo. Pero también me da paz, una paz que hacía mucho no sentía y que hoy se ha vuelto indispensable." },
     { fecha: '2026-01-26', texto: "Gracias por mirarme con esa complicidad tan tuya, por estar, por quedarte, por hacer de mi vida un lugar más cálido. Quiero que sepas que también estoy aquí para ti, dispuesto a cuidarte con la misma dedicación. Eres mi lugar favorito, incluso cuando el mundo se vuelve difícil." },
-    { fecha: '2026-01-27', texto: "Hoy no tengo texto para ti pprque seguro ya no lees esto pero por si acaso. Lindo despertar reina, que tengas un dia especial e increible comi tu 🩷" },
+    { fecha: '2026-01-27', texto: "Hoy no tengo texto para ti porque seguro ya no lees esto pero por si acaso. Lindo despertar reina, que tengas un día especial e increible como tu 🩷" },
     { fecha: '2026-01-28', texto: "lorem ipsum17" },
     { fecha: '2026-01-29', texto: 'Quiero confesarte que este mes ha tenido días tan duros como hermosos, verte tan desconectada de mi me partía el alma, intentar día tras día llegar a ti que poco a poco ibas cediendo pero cuando me dabas un stop lloraba por dentro, me hacía pedazos, pero la constancia está danndo frutos, el proceso ha sido hermoso, estamos aprendiendo de nuestro pasado, viviendo el presente y construyendo el futuro, yo me siento super feliz, espero que tu tambien lo estés. Feliz 1er mes de reconexión de nuestra relación.' },
     { fecha: '2026-01-30', texto: 'A veces pienso en como seria estar con alguien "más fácil". Alguien sin nuestras heridas, sin nuestros complejos. Y la verdad es que probablemente sería más simple, menos peleas, menos trabajo, pero tambien seria menos profundo, menos real, menos transformador. Porque lo fácil no nos hace crecer, lo difícil si, y contigo he crecido de formas que nunca imaginé. Así que aunque sea trabajo duro, es el trabajo que elijo. Porque contigo me estoy convirtiendo en la mejor version de mi.' },
@@ -67,6 +67,7 @@ const fondos = [
         'src/naranja/fondo16.jpg'
 
     ];
+
 
 
 
